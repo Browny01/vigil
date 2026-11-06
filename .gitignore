@@ -1,0 +1,13 @@
+bin/
+artifacts/
+*.test
+node_modules/
+.env
+.env.*
+!.env.example
+VERIFICATION.md
+*.log
+password
+history.json
+archive.json.gz
+alerts.json

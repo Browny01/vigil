@@ -1,0 +1,12 @@
+[Unit]
+Description=Vigil system and process monitor
+After=network.target
+
+[Service]
+ExecStart=%h/.local/bin/vigil
+Restart=on-failure
+RestartSec=3
+UMask=0077
+
+[Install]
+WantedBy=default.target
