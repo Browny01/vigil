@@ -1,0 +1,19 @@
+services:
+  vigil:
+    build: .
+    restart: unless-stopped
+    network_mode: host
+    command: ["-listen=127.0.0.1:9120", "-state=/data", "-proc-root=/host/proc", "-host-root=/host"]
+    volumes:
+      - vigil_data:/data
+      - /proc:/host/proc:ro
+      - /sys:/sys:ro
+      - /:/host:ro,rslave
+      - /etc/passwd:/etc/passwd:ro
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 128m
+    cpus: 0.5
+volumes:
+  vigil_data:
